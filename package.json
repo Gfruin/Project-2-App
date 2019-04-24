@@ -1,0 +1,28 @@
+{
+  "name": "project-2-app",
+  "version": "1.0.0",
+  "description": "***USER STORIES*** 1. User creates account 2. User logs into account 3. When user clicks create account they are taken to concert listings index 4. User will be able to search for concert tickets 5. User will be able to create a sell post 6. User will be able to create a buy (looking for/WTB) post   - User will be able to add tags to their created posts (buying, selling, free, etc.) 7. User will be able to edit current posts 8. User will be able to delete posts 9. User will be able to list contact info in create post (for now) 10. User will be able to click on listing index posts 11. User will be able to comment on others' posts 12. User will be able to turn off commenting on their own posts 13. User should be able to link to their Venmo, PayPal, etc.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gfruin/Project-2-App.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Gfruin/Project-2-App/issues"
+  },
+  "homepage": "https://github.com/Gfruin/Project-2-App#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "express-session": "^1.16.1",
+    "method-override": "^3.0.0",
+    "mongodb": "^3.2.3",
+    "mongoose": "^5.5.3"
+  }
+}
