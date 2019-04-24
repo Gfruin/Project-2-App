@@ -22,3 +22,4 @@
 3. User would be able to directly message other users
 4. User would be able to rate their experience with other users
 5. User would be able to securely exchange money on site (not for money laundering purposes)
+6. User will be able to add interest checks and trade as well.
