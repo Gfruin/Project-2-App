@@ -8,7 +8,7 @@ const connectionString = 'mongodb://localhost/tix10'
 mongoose.connect(connectionString, {
 	useNewUrlParser: true,
 	useCreateIndex: true,
-	useFindAndModify: false dssadaDasd
+	useFindAndModify: false 
 })
 //connection.on connect
 mongoose.connection.on('connected', () => {
