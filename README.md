@@ -24,3 +24,15 @@
 5. User would be able to securely exchange money on site (not for money laundering purposes)
 6. User will be able to add interest checks and trade as well.
 7. User will be able to add ratings to other users.
+
+
+
+*****Wireframes******
+
+https://imgur.com/Ftc0Ldo 
+
+https://imgur.com/4bgXZRR
+
+https://imgur.com/X1WsoYZ
+
+https://imgur.com/JJmFXlz
