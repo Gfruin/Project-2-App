@@ -7,5 +7,6 @@ const ratingSchema = new mongoose.Schema({
 	},
 })
 //define the model 
-
+const Rating = new mongoose.model('Rating', ratingSchema)
 //export module
+module.exports = Rating
