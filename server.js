@@ -14,6 +14,15 @@ const userController = require('./controllers/userController')
 // const authController = require('./controllers/authController')
 
 //middleware
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(methodOverride('_method'));
+
+app.use('/user', userController)
+// app.use('/post', postController)
+// app.use('/rating', ratingController)
+// app.use('/comment', commentController)
+// app.use('/tag', tagController)
+
 
 
 //app listener 
