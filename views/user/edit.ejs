@@ -4,9 +4,9 @@
 	<title>User Editor Page</title>
 </head>
 <body>
-	<h1>Edit your Profile</h1>
-	<form action="/user/ <%= user._id%>?_method=PUT" method="POST">
-		<input type="text" name="username"><br>
+	<h1>Edit <%=user.username%>'s Profile</h1>
+	<form action="/user/<%=user._id%>?_method=PUT" method="POST">
+		Username: <input type="text" name="username"><br>
 		<button>Update Profile</button>
 
 

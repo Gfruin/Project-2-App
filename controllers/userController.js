@@ -55,48 +55,48 @@ router.get('/:id', (req, res) => {
 
 
 //delete route
-// router.delete('/:id', (req, res) => {
-// 	User.findByIdAndRemove(req.params.id, (err, deletedUser) => {
-// 		// if(err){
-// 		// 	res.send(err);
-// 		// } else {
-// 		// 	console.log(deletedUser, "<--was deleted");
-// 		// 	Post.deleteMany({
-// 		// 		_id: {
-// 		// 			$in: deletedUser.posts
-// 		// 		}
-// 		// 	}, (err, data) => {
-// 		// 		console.log(data)
-// 		// 		res.redirect('/user');
-// 		// 	})
-// 		// }
-// 		if(err){
-// 			res.send(err);
-// 		else{
-// 			console.log(deletedUser, "<--was deleted");
-// 			res.redirect('/user');
-// 		}
-// 		}
-// 	})
-// })
+router.delete('/:id', (req, res) => {
+	User.findByIdAndRemove(req.params.id, (err, deletedUser) => {
+		// if(err){
+		// 	res.send(err);
+		// } else {
+		// 	console.log(deletedUser, "<--was deleted");
+		// 	Post.deleteMany({
+		// 		_id: {
+		// 			$in: deletedUser.posts
+		// 		}
+		// 	}, (err, data) => {
+		// 		console.log(data)
+		// 		res.redirect('/user');
+		// 	})
+		// }
+		if(err){
+			res.send(err);
+		} else{
+			console.log(deletedUser, "<--was deleted");
+			res.redirect('/user');
+		}
+		// }
+	})
+})
 
-edit route
+// edit route
 router.get('/:id/edit', (req, res) => {
 	User.findById(req.params.id, (err, foundUser) => {
-		res.render('user/edit.ejs', {user: foundUser}
+		res.render('user/edit.ejs', {user: foundUser})
 	})
 })
 	
-//update route
-// router.put('/:id', (req, res) => {
-// 	User.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedUser) => {
-// 		if(err){
-// 			res.send(err);
-// 		} else {
-// 			res.redirect('/user');
-// 		}
-// 	});
-// });
+// update route
+router.put('/:id', (req, res) => {
+	User.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedUser) => {
+		if(err){
+			res.send(err);
+		} else {
+			res.redirect('/user');
+		}
+	});
+});
 
 
 //export module
