@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 
 //make connection string
-const connectionString = 'mongodb://localhost/tix10'
+const connectionString = 'mongodb://localhost/tix11'
 
 //connect mongoose
 mongoose.connect(connectionString, {

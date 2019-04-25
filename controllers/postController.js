@@ -4,58 +4,107 @@ const router = express.Router();
 const Post = require('../models/post'); //may need to change the variable name and multiples
 const User = require('../models/user');
 //index route
-router.get('/', (req,res) => {
-	console.log('<-------------Hit the index route');
-	//need to display the posts that have been created
-	Post.find({}, (err, foundPost) => {
-		if(err) {
-			console.log(err);
-		} else {
-			res.render('post/index.ejs', {post: foundPost})
+router.get('/', (req, res) => {
+    console.log('<-------------Hit the index route');
+    //need to display the posts that have been created
+    Post.find({}, (err, foundPost) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.render('post/index.ejs', {
+                post: foundPost
+            })
 
-		}
-	})
+        }
+    })
 })
-//show route
-// router.get('/:id', (req, res) => {
-// 	//Should this be our list of all posts by an user? 
-// 	//What will it show? 
-// 	res.render('post/show.ejs') //may need to alter route "post" to "posts"
-// })
 //new route
-router.get('/new', (req, res) => {
-	//This route will display the creation page for a new post
-	res.render('post/new.ejs') //may need to alter route "post" to "posts"
+router.get('/new', (req, res, next) => {
+    User.find({}, (err, allUsers) => {
+        if (err) {
+            next(err);
+        } else {
+            res.render('post/new.ejs') //may need to alter route "post" to "posts"
+            user: allUsers
+        }
+    })
 })
 //create route
-router.post('/', (req,res) => {
-	console.log('this is the create route');  
-	Post.create(req.body, (err, createdPost) => {
-		if(err) {
-			console.log(err);
-		} else {
- //may need to alter route "post" to "posts"
-			res.redirect('/post')
-		}
-	})
+router.post('/', (req, res) => {
+    console.log('this is the post create route');
+    Post.create(req.body, (err, createdPost) => {
+        if (err) {
+            console.log(err);
+        } else {
+            /// find the correct user and push into their array
+            User.findById(req.body.userId, (err, foundUser) => {
+                console.log(foundUser, 'here is the user ');
+                foundUser.post.push(createdPost);
+                foundUser.save((err, savedUser) => {
+                    console.log(savedUser, "ohohofgdsajfdj");
+                    res.redirect('/post')
+                    
+                })
+            })
+            //may need to alter route "post" to "posts"
+        }
+    })
 })
-//delete route
+// show route
+
+router.get('/:id', (req, res, next) => {
+  Post
+    .findById(req.params.id)
+    .populate('comments') 
+    .exec((err, foundPost) => {
+      if(err) next(err);
+      else {
+        console.log("----------");
+        console.log(foundPost);
+        res.render('post/show.ejs', { // render show template -- we render templates
+          post: foundPost // this contains the ID
+        })
+      }
+    })
+})
+// router.get('/:id', (req, res) => {
+//     User
+//         .findOne({
+//             'post._id': req.params.id
+//         })
+//         .populate({
+//             path: 'post',
+//             match: {
+//                 _id: req.params.id
+//             }
+//         })
+//         .exec((err, foundUser) => {
+//             console.log(foundUser, "<---- foundUser in post show route");
+//             res.render('post/show.ejs', {
+//                 user: foundUser,
+//                 post: foundUser.post[0]
+//             })
+//         })
+// });
+// delete route
 router.delete('/:id', (req, res) => {
-	Post.findbyIdAndRemove(req.params.id, (err, deletedPost) => {
-		User.findOne({'post': req.params.id}, (err, foundUser) => {
-			if(err){
-				res.send(err)
-			} else {
-				console.log(foundUser, "<-------this is our User before deletion");
-				foundUser.post.remove(req.params.id);
-				foundUser.save((err, updatedUser) => {
-					console.log(updatedUser);
-					res.redirect('/post');
-				})
-			}
-		})
-	})
-	res.redirect('/post') //may need to alter route "post" to "posts"
+    Post.findbyIdAndRemove(req.params.id, (err, deletedPost) => {
+        User.findOne({
+            'post': req.params.id
+        }, (err, foundUser) => {
+            if (err) {
+                res.send(err)
+            } else {
+                console.log(foundUser, "<-------this is our User before deletion");
+                foundUser.post.remove(req.params.id);
+                foundUser.save((err, updatedUser) => {
+                    console.log(updatedUser);
+                    res.redirect('/post');
+                })
+            }
+        })
+    })
+    // res.redirect('/post') //may need to alter route "post" to "posts"
 })
 // //edit route
 // router.get('/:id/edit', (req, res) => {
@@ -80,7 +129,3 @@ router.delete('/:id', (req, res) => {
 //export module
 
 module.exports = router;
-
-
-
-

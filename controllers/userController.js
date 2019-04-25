@@ -2,7 +2,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/user.js');
-// const Post = require('../models/post.js');
+const Post = require('../models/post.js');
 // const Tag = require('../models/tag.js')
 // const Comment = require('../models/comment.js')
 const explainError = require('explain-error')

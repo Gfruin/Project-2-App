@@ -5,8 +5,9 @@
 </head>
 <body>
 	<h1>Post Display</h1>
-	<h2> Your post name is <%= post.title %></h2>
-	<h3>Your posts here: </h3>
+	<h2> post name is <%= post.title %></h2>
+	<h3>Post ID: <%=post._id%></h3>
+	<h4>Your posts here: </h4>
 
 		<form action="/post/<%= post._id%>/edit">
 			<button>EDIT!</button>
