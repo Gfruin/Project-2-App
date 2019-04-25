@@ -5,6 +5,7 @@ const User = require('../models/user.js');
 // const Post = require('../models/post.js');
 // const Tag = require('../models/tag.js')
 // const Comment = require('../models/comment.js')
+const explainError = require('explain-error')
 
 //index route
 router.get('/', (req, res) => {
@@ -18,30 +19,6 @@ router.get('/', (req, res) => {
 		}
 	})
 })
-//show route
-// router.get('/:id', (req, res) => {
-	// if (err){
-	// 	console.log(err);
-	// else {
-	// 	res.render('user/show.ejs', '<-----You hit the page!')
-	// 	console.log('Here are your posts');
-	// }
-	// }
-	// User
-	// 	.findById(req.params.id)
-	// 	.populate('comments')
-	// 	.populate('ratings')
-	// 	.populate('tags')
-	// 	.exec((err, foundUser) => {
-	// 		if(err) 
-	// 			console.log(err);
-	// 		else {
-	// 			console.log(foundUser);
-	// 			res.render('user/show.ejs', {user: foundUser})
-	// 		}
-	// 	}
-// })
-
 //new route
 router.get('/new', (req, res) => {
 	res.render('user/new.ejs')
@@ -59,6 +36,31 @@ router.post('/', (req, res) => {
 		}
 	})
 });
+//show route
+router.get('/:id', (req, res) => {
+	// console.log('HERE IT IS!!');
+	// res.send('user/show.ejs')
+	// if (err) {
+	// 	console.log(err);
+	// } else {
+	// 	res.render('user/show.ejs', '<-----You hit the page!')
+	// 	console.log('Here are your posts');
+	// }
+	User
+		.findById(req.params.id)
+		.populate('comments')
+		.populate('ratings')
+		.populate('tags')
+		.exec((err, foundUser) => {
+			if(err) {
+				console.log(err);
+			} else {
+				console.log(foundUser);
+				res.render('user/show.ejs', {user: foundUser})
+			}
+		})
+})
+
 
 //delete route
 // router.delete('/:id', (req, res) => {
