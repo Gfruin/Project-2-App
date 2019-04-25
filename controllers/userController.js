@@ -2,9 +2,9 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/user.js');
-const Post = require('../models/post.js');
-const Tag = require('../models/tag.js')
-const Comment = require('../models/comment.js')
+// const Post = require('../models/post.js');
+// const Tag = require('../models/tag.js')
+// const Comment = require('../models/comment.js')
 
 //index route
 router.get('/', (req, res) => {
@@ -18,19 +18,26 @@ router.get('/', (req, res) => {
 })
 //show route
 router.get('/:id', (req, res) => {
-	User
-		.findById(req.params.id)
-		.populate('comments')
-		.populate('ratings')
-		.populate('tags')
-		.exec((err, foundUser) => {
-			if(err) 
-				console.log(err);
-			else {
-				console.log(foundUser);
-				res.render('user/show.ejs', {user: foundUser})
-			}
-		}
+	if (err){
+		console.log(err);
+	else {
+		res.render('user/show.ejs', '<-----You hit the page!')
+		console.log('Here are your posts');
+	}
+	}
+	// User
+	// 	.findById(req.params.id)
+	// 	.populate('comments')
+	// 	.populate('ratings')
+	// 	.populate('tags')
+	// 	.exec((err, foundUser) => {
+	// 		if(err) 
+	// 			console.log(err);
+	// 		else {
+	// 			console.log(foundUser);
+	// 			res.render('user/show.ejs', {user: foundUser})
+	// 		}
+	// 	}
 })
 
 //new route
@@ -53,18 +60,25 @@ router.post('/', (req, res) => {
 //delete route
 router.delete('/:id', (req, res) => {
 	User.findByIdAndRemove(req.params.id, (err, deletedUser) => {
+		// if(err){
+		// 	res.send(err);
+		// } else {
+		// 	console.log(deletedUser, "<--was deleted");
+		// 	Post.deleteMany({
+		// 		_id: {
+		// 			$in: deletedUser.posts
+		// 		}
+		// 	}, (err, data) => {
+		// 		console.log(data)
+		// 		res.redirect('/user');
+		// 	})
+		// }
 		if(err){
 			res.send(err);
-		} else {
+		else{
 			console.log(deletedUser, "<--was deleted");
-			Post.deleteMany({
-				_id: {
-					$in: deletedUser.posts
-				}
-			}, (err, data) => {
-				console.log(data)
-				res.redirect('/user');
-			})
+			res.redirect('/user');
+		}
 		}
 	})
 })
