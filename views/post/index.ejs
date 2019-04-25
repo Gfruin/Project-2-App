@@ -5,5 +5,16 @@
 </head>
 <body>
 	<h1> Post Index Page</h1>
+		<ul>
+		<% for(let i = 0; i < post.length; i++) {%>
+		<li>
+			<a href="/post/<%=post[i]._id%>"><%= post[i].username%></a>
+
+
+		</li>
+		<%}%>
+
+	</ul>
+
 </body>
 </html>

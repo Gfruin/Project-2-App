@@ -7,7 +7,14 @@ const User = require('../models/user');
 router.get('/', (req,res) => {
 	console.log('<-------------Hit the index route');
 	//need to display the posts that have been created
-	res.render('/index.ejs', 'Look at terminal')
+	Post.find({}, (err, foundPost) => {
+		if(err) {
+			console.log(err);
+		} else {
+			res.render('post/index.ejs', {post: foundPost})
+
+		}
+	})
 })
 //show route
 router.get('/:id', (req, res) => {
