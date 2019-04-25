@@ -11,5 +11,11 @@
 <form action="/user/<%= user._id%>/edit">
 <button>EDIT!</button>
 </form>
+	<form action="/user/<%=user._id%>?_method=DELETE" method="POST">
+		<h1>Delete Account</h1>
+		<button>Delete</button>
+	</form>
+	
+
 </body>
 </html>
