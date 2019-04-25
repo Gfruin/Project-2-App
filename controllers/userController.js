@@ -38,14 +38,6 @@ router.post('/', (req, res) => {
 });
 //show route
 router.get('/:id', (req, res) => {
-	// console.log('HERE IT IS!!');
-	// res.send('user/show.ejs')
-	// if (err) {
-	// 	console.log(err);
-	// } else {
-	// 	res.render('user/show.ejs', '<-----You hit the page!')
-	// 	console.log('Here are your posts');
-	// }
 	User
 		.findById(req.params.id)
 		.populate('comments')
@@ -88,12 +80,12 @@ router.get('/:id', (req, res) => {
 // 	})
 // })
 
-//edit route
-// router.get('/:id/edit', (req, res) => {
-// 	User.findById(req.params.id, (err, foundUser) => {
-// 		res.render('user/edit.ejs', {user: foundUser}
-// 	})
-// })
+edit route
+router.get('/:id/edit', (req, res) => {
+	User.findById(req.params.id, (err, foundUser) => {
+		res.render('user/edit.ejs', {user: foundUser}
+	})
+})
 	
 //update route
 // router.put('/:id', (req, res) => {
