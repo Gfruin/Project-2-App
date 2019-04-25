@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Index Page</title>
+</head>
+<body>
+	<h1> User Index Page</h1>
+	<ul>
+		<% for(let i = 0; i < user.length; i++) {%>
+		<li>
+			<a href="/user/<%=user[i]._id%>"><%= user[i].username%></a>
+
+
+		</li>
+		<%}%>
+
+	</ul>
+</body>
+</html>

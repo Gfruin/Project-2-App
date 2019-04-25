@@ -8,23 +8,25 @@ const User = require('../models/user.js');
 
 //index route
 router.get('/', (req, res) => {
-	User.find({}), (err, foundUsers) => {
-		if(err) 
+	User.find({}, (err, foundUser) => {
+		if(err) {
 			console.log(err);
-		else {
-			res.render('user/index.ejs', {users: foundUsers});
+			res.send(err)
+		} else {
+			console.log('where is the index page?');
+			res.render('user/index.ejs', {user: foundUser});
 		}
-	}
+	})
 })
 //show route
-router.get('/:id', (req, res) => {
-	if (err){
-		console.log(err);
-	else {
-		res.render('user/show.ejs', '<-----You hit the page!')
-		console.log('Here are your posts');
-	}
-	}
+// router.get('/:id', (req, res) => {
+	// if (err){
+	// 	console.log(err);
+	// else {
+	// 	res.render('user/show.ejs', '<-----You hit the page!')
+	// 	console.log('Here are your posts');
+	// }
+	// }
 	// User
 	// 	.findById(req.params.id)
 	// 	.populate('comments')
@@ -38,7 +40,7 @@ router.get('/:id', (req, res) => {
 	// 			res.render('user/show.ejs', {user: foundUser})
 	// 		}
 	// 	}
-})
+// })
 
 //new route
 router.get('/new', (req, res) => {
@@ -52,54 +54,55 @@ router.post('/', (req, res) => {
 		if(err){
 			res.send(err);
 		} else {
-			res.redirect('/user');
+			console.log('WHERE IS IT???');
+			res.redirect('/');
 		}
 	})
 });
 
 //delete route
-router.delete('/:id', (req, res) => {
-	User.findByIdAndRemove(req.params.id, (err, deletedUser) => {
-		// if(err){
-		// 	res.send(err);
-		// } else {
-		// 	console.log(deletedUser, "<--was deleted");
-		// 	Post.deleteMany({
-		// 		_id: {
-		// 			$in: deletedUser.posts
-		// 		}
-		// 	}, (err, data) => {
-		// 		console.log(data)
-		// 		res.redirect('/user');
-		// 	})
-		// }
-		if(err){
-			res.send(err);
-		else{
-			console.log(deletedUser, "<--was deleted");
-			res.redirect('/user');
-		}
-		}
-	})
-})
+// router.delete('/:id', (req, res) => {
+// 	User.findByIdAndRemove(req.params.id, (err, deletedUser) => {
+// 		// if(err){
+// 		// 	res.send(err);
+// 		// } else {
+// 		// 	console.log(deletedUser, "<--was deleted");
+// 		// 	Post.deleteMany({
+// 		// 		_id: {
+// 		// 			$in: deletedUser.posts
+// 		// 		}
+// 		// 	}, (err, data) => {
+// 		// 		console.log(data)
+// 		// 		res.redirect('/user');
+// 		// 	})
+// 		// }
+// 		if(err){
+// 			res.send(err);
+// 		else{
+// 			console.log(deletedUser, "<--was deleted");
+// 			res.redirect('/user');
+// 		}
+// 		}
+// 	})
+// })
 
 //edit route
-router.get('/:id/edit', (req, res) => {
-	User.findById(req.params.id, (err, foundUser) => {
-		res.render('user/edit.ejs', {user: foundUser}
-	})
-})
+// router.get('/:id/edit', (req, res) => {
+// 	User.findById(req.params.id, (err, foundUser) => {
+// 		res.render('user/edit.ejs', {user: foundUser}
+// 	})
+// })
 	
 //update route
-router.put('/:id', (req, res) => {
-	User.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedUser) => {
-		if(err){
-			res.send(err);
-		} else {
-			res.redirect('/user');
-		}
-	});
-});
+// router.put('/:id', (req, res) => {
+// 	User.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedUser) => {
+// 		if(err){
+// 			res.send(err);
+// 		} else {
+// 			res.redirect('/user');
+// 		}
+// 	});
+// });
 
 
 //export module
