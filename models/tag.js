@@ -1,6 +1,6 @@
 //require mongoose
 
-//define commentSchema
+//define tagSchema
 
 //define the model 
 
