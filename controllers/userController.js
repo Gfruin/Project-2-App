@@ -12,30 +12,30 @@ router.get('/', (req, res) => {
 		if(err) 
 			console.log(err);
 		else {
-			res.render('users/index.ejs', {users: foundUsers});
+			res.render('user/index.ejs', {users: foundUsers});
 		}
 	}
 })
 //show route
-router.get('/:id'. (req, res) => {
+router.get('/:id', (req, res) => {
 	User
 		.findById(req.params.id)
 		.populate('comments')
 		.populate('ratings')
 		.populate('tags')
-		.exec((err, foundUser)) => {
+		.exec((err, foundUser) => {
 			if(err) 
 				console.log(err);
 			else {
 				console.log(foundUser);
-				res.render('users/show.ejs', {users: foundUsers})
+				res.render('user/show.ejs', {user: foundUser})
 			}
 		}
 })
 
 //new route
 router.get('/new', (req, res) => {
-	res.render('users/new.ejs')
+	res.render('user/new.ejs')
 })
 
 //create route
@@ -45,7 +45,7 @@ router.post('/', (req, res) => {
 		if(err){
 			res.send(err);
 		} else {
-			res.redirect('/users');
+			res.redirect('/user');
 		}
 	})
 });
@@ -63,7 +63,7 @@ router.delete('/:id', (req, res) => {
 				}
 			}, (err, data) => {
 				console.log(data)
-				res.redirect('/users');
+				res.redirect('/user');
 			})
 		}
 	})
@@ -72,7 +72,7 @@ router.delete('/:id', (req, res) => {
 //edit route
 router.get('/:id/edit', (req, res) => {
 	User.findById(req.params.id, (err, foundUser) => {
-		res.render('users/edit.ejs', {user: foundUser}
+		res.render('user/edit.ejs', {user: foundUser}
 	})
 })
 	
@@ -82,7 +82,7 @@ router.put('/:id', (req, res) => {
 		if(err){
 			res.send(err);
 		} else {
-			res.redirect('/users');
+			res.redirect('/user');
 		}
 	});
 });
