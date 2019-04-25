@@ -4,7 +4,7 @@ const mongoose = require('mongoose')
 //define postSchema
 const postSchema = new mongoose.Schema({
 	title: String,
-	body: String,
+	description: String,
 	tag: [{type: mongoose.Schema.Types.ObjectId, ref: "Tag"}],
 	comment: [{type: mongoose.Schema.Types.ObjectId, ref: "User"}]
 

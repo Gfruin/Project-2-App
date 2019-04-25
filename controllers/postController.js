@@ -17,11 +17,11 @@ router.get('/', (req,res) => {
 	})
 })
 //show route
-router.get('/:id', (req, res) => {
-	//Should this be our list of all posts by an user? 
-	//What will it show? 
-	res.render('post/show.ejs') //may need to alter route "post" to "posts"
-})
+// router.get('/:id', (req, res) => {
+// 	//Should this be our list of all posts by an user? 
+// 	//What will it show? 
+// 	res.render('post/show.ejs') //may need to alter route "post" to "posts"
+// })
 //new route
 router.get('/new', (req, res) => {
 	//This route will display the creation page for a new post
@@ -29,12 +29,7 @@ router.get('/new', (req, res) => {
 })
 //create route
 router.post('/', (req,res) => {
-	//this route will have a create function
-	//this route will need to be connected to the users
-	//some kind of find function? 
-	//using req.body to find the user
-	//then should we 'push' the user into the created article?
-	console.log('this is the create route');
+	console.log('this is the create route');  
 	Post.create(req.body, (err, createdPost) => {
 		if(err) {
 			console.log(err);
@@ -45,13 +40,23 @@ router.post('/', (req,res) => {
 	})
 })
 //delete route
-// router.delete('/:id', (req, res) => {
-// 	//this route will find the article by an id and remove
-// 	//once the post is connected to an user, when we delete we will also 
-// 	//need to 'clear' or delete the user connection
-// 	//and then we will need to update the user again 
-// 	res.redirect('/post') //may need to alter route "post" to "posts"
-// })
+router.delete('/:id', (req, res) => {
+	Post.findbyIdAndRemove(req.params.id, (err, deletedPost) => {
+		User.findOne({'post': req.params.id}, (err, foundUser) => {
+			if(err){
+				res.send(err)
+			} else {
+				console.log(foundUser, "<-------this is our User before deletion");
+				foundUser.post.remove(req.params.id);
+				foundUser.save((err, updatedUser) => {
+					console.log(updatedUser);
+					res.redirect('/post');
+				})
+			}
+		})
+	})
+	res.redirect('/post') //may need to alter route "post" to "posts"
+})
 // //edit route
 // router.get('/:id/edit', (req, res) => {
 // 	//this route will allow the user to select all users when they are editing the user

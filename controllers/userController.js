@@ -57,26 +57,25 @@ router.get('/:id', (req, res) => {
 //delete route
 router.delete('/:id', (req, res) => {
 	User.findByIdAndRemove(req.params.id, (err, deletedUser) => {
-		// if(err){
-		// 	res.send(err);
-		// } else {
-		// 	console.log(deletedUser, "<--was deleted");
-		// 	Post.deleteMany({
-		// 		_id: {
-		// 			$in: deletedUser.posts
-		// 		}
-		// 	}, (err, data) => {
-		// 		console.log(data)
-		// 		res.redirect('/user');
-		// 	})
-		// }
+		if(err){
+			res.send(err);
+		} else {
+			console.log(deletedUser, "<--was deleted");
+			Post.deleteMany({
+				_id: {
+					$in: deletedUser.posts
+				}
+			}, (err, data) => {
+				console.log(data)
+				res.redirect('/user');
+			}) //look here first for error
+		}
 		if(err){
 			res.send(err);
 		} else{
 			console.log(deletedUser, "<--was deleted");
 			res.redirect('/user');
 		}
-		// }
 	})
 })
 
