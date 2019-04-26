@@ -7,12 +7,12 @@ const User = require('../models/user');
 router.get('/', (req, res) => {
     console.log('<-------------Hit the index route');
     //need to display the posts that have been created
-    Post.find({}, (err, foundPost) => {
+    Post.find({}, (err, foundPosts) => {
         if (err) {
             console.log(err);
         } else {
-            res.render('post/index.ejs', {
-                post: foundPost
+            res.render('posts/index.ejs', {
+                posts: foundPosts
             })
 
         }
@@ -24,8 +24,8 @@ router.get('/new', (req, res, next) => {
         if (err) {
             next(err);
         } else {
-            res.render('post/new.ejs') //may need to alter route "post" to "posts"
-            user: allUsers
+            res.render('posts/new.ejs') //may need to alter route "post" to "posts"
+            users: allUsers
         }
     })
 })
@@ -44,7 +44,7 @@ router.post('/', (req, res) => {
                 foundUser.post.push(createdPost);
                 foundUser.save((err, savedUser) => {
                     console.log(savedUser, "ohohofgdsajfdj");
-                    res.redirect('/post')
+                    res.redirect('/posts')
 
                 })
             })
@@ -63,7 +63,7 @@ router.get('/:id', (req, res, next) => {
             else {
                 console.log("----------");
                 console.log(foundPost);
-                res.render('post/show.ejs', { // render show template -- we render templates
+                res.render('posts/show.ejs', { // render show template -- we render templates
                     post: foundPost // this contains the ID
                 })
             }
@@ -82,7 +82,7 @@ router.get('/:id', (req, res, next) => {
 //         })
 //         .exec((err, foundUser) => {
 //             console.log(foundUser, "<---- foundUser in post show route");
-//             res.render('post/show.ejs', {
+//             res.render('posts/show.ejs', {
 //                 user: foundUser,
 //                 post: foundUser.post[0]
 //             })
@@ -101,7 +101,7 @@ router.delete('/:id', (req, res) => {
                 foundUser.post.remove(req.params.id);
                 foundUser.save((err, updatedUser) => {
                     console.log(updatedUser);
-                    res.redirect('/post');
+                    res.redirect('/posts');
                 })
             }
         })
@@ -116,7 +116,7 @@ router.get('/:id/edit', (req, res) => {
     //User.findOne?
     //use .populate to find all articles
     //use match to populate only articles that match the certain user id
-    User.find({}, (err, allUser) => {
+    User.find({}, (err, allUsers) => {
         User.findOne({
                 'post': req.params.id
             })
@@ -131,9 +131,9 @@ router.get('/:id/edit', (req, res) => {
                 if (err) {
                     res.send(err)
                 } else {
-                    res.render('post/edit.ejs', { //may need to alter route "post" to "posts"
+                    res.render('posts/edit.ejs', { //may need to alter route "post" to "posts"
                         post: foundPostUser.post[0],
-                        user: allUser,
+                        users: allUsers,
                         postUser: foundPostUser
                     })
                 }
@@ -156,13 +156,13 @@ router.put('/:id', (req,res) => {
                     User.findById(req.body.userId, (err, newUser) => {
                         newUser.post.push(updatedPost);
                         newUser.save((err, savedNewUser) => {
-                            res.redirect('/post' + req.params.id)
+                            res.redirect('/posts' + req.params.id)
                         })
                    
                     })
                 })
             } else {
-                res.redirect('/post/' + req.params.id)
+                res.redirect('/posts/' + req.params.id)
             }
         })
     })
