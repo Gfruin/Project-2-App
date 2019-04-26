@@ -9,19 +9,19 @@ const explainError = require('explain-error')
 
 //index route
 router.get('/', (req, res) => {
-	User.find({}, (err, foundUser) => {
+	User.find({}, (err, foundUsers) => {
 		if(err) {
 			console.log(err);
 			res.send(err)
 		} else {
 			console.log('where is the index page?');
-			res.render('user/index.ejs', {user: foundUser});
+			res.render('users/index.ejs', {users: foundUsers});
 		}
 	})
 })
 //new route
 router.get('/new', (req, res) => {
-	res.render('user/new.ejs')
+	res.render('users/new.ejs')
 })
 
 //create route
@@ -48,7 +48,7 @@ router.get('/:id', (req, res) => {
 				console.log(err);
 			} else {
 				console.log(foundUser);
-				res.render('user/show.ejs', {user: foundUser})
+				res.render('users/show.ejs', {user: foundUser})
 			}
 		})
 })
@@ -67,14 +67,14 @@ router.delete('/:id', (req, res) => {
 				}
 			}, (err, data) => {
 				console.log(data)
-				res.redirect('/user');
+				res.redirect('/users');
 			}) //look here first for error
 		}
 		if(err){
 			res.send(err);
 		} else{
 			console.log(deletedUser, "<--was deleted");
-			res.redirect('/user');
+			res.redirect('/users');
 		}
 	})
 })
@@ -82,7 +82,7 @@ router.delete('/:id', (req, res) => {
 // edit route
 router.get('/:id/edit', (req, res) => {
 	User.findById(req.params.id, (err, foundUser) => {
-		res.render('user/edit.ejs', {user: foundUser})
+		res.render('users/edit.ejs', {user: foundUser})
 	})
 })
 	
@@ -92,7 +92,7 @@ router.put('/:id', (req, res) => {
 		if(err){
 			res.send(err);
 		} else {
-			res.redirect('/user');
+			res.redirect('/users');
 		}
 	});
 });
