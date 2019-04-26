@@ -8,21 +8,24 @@ const explainError = require('explain-error')
 require('./db/db')
 //controllers
 const userController = require('./controllers/userController')
-// const commentController = require('./controllers/commentController')
 const postController = require('./controllers/postController')
-// const tagController = require('./controllers/tagController')
-// const ratingController = require('./controllers/ratingController')
-// const authController = require('./controllers/authController')
+
+const authController = require('./controllers/authController')
 
 //middleware
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(methodOverride('_method'));
 
+app.use(session({
+	secret: 'You got a secret random string',
+	resave: false,
+	saveUninitialized: false
+}))
+
 app.use('/user', userController)
 app.use('/post', postController)
-// app.use('/rating', ratingController)
-// app.use('/comment', commentController)
-// app.use('/tag', tagController)
+app.use('/auth', authController)
+
 
 
 

@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/user');
-const bcrypt = require('bcrypt.js')
+const bcrypt = require('bcryptjs')
 
 router.get('/login', (req, res) => {
 	res.render('login.ejs', {
@@ -9,12 +9,15 @@ router.get('/login', (req, res) => {
 	})
 });
 
-router.post('/register', async( req, res) => {
+router.post('/register', async (req, res) => {
 	const password = req.body.password;
 	const passwordHash = bcrypt.hashSync(password, bcrypt.genSaltSync(10))
-}
+		console.log('You have registered');
+})
 
-const hashedString = bcrypt.hashSync('Your Password', brcypt.genSaltSync(10));
+
+
+const hashedString = bcrypt.hashSync('Your Password', bcrypt.genSaltSync(10));
 router.post('/register', async (req, res) => {
 	const password = req.body.password;
 	const passwordHash = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
@@ -27,7 +30,7 @@ router.post('/register', async (req, res) => {
 		req.session.logged = true;
 		req.session.userDBEntry = createdUser._id;
 
-		res.redirect('/authors');
+		res.redirect('/user');
 	} catch(err){
 		res.send(err)
 	}
