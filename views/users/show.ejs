@@ -8,10 +8,10 @@
 	<h2> Your username is <%= user.username %></h2>
 	<h3>Your posts here: </h3>
 
-<form action="/user/<%= user._id%>/edit">
+<form action="/users/<%= user._id%>/edit">
 <button>EDIT!</button>
 </form>
-	<form action="/user/<%=user._id%>?_method=DELETE" method="POST">
+	<form action="/users/<%=user._id%>?_method=DELETE" method="POST">
 		<h1>Delete Account</h1>
 		<button>Delete</button>
 	</form>
