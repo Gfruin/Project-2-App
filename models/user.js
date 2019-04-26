@@ -4,7 +4,7 @@ const mongoose = require('mongoose')
 const userSchema = new mongoose.Schema({
 	username: String,
 	password: String,
-	post: [{type: mongoose.Schema.Types.ObjectId, ref: "Post"}]
+	posts: [{type: mongoose.Schema.Types.ObjectId, ref: "Posts"}]
 })
 //define the model 
 const User = mongoose.model('User', userSchema);
