@@ -27,7 +27,7 @@ router.post('/register', async (req, res) => {
 		req.session.logged = true;
 		req.session.userDBEntry = createdUser._id;
 
-		res.redirect('/user');
+		res.redirect('/users');
 	} catch(err){
 		res.send(err)
 	}
