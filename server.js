@@ -22,8 +22,8 @@ app.use(session({
 	saveUninitialized: false
 }))
 
-app.use('/user', userController)
-app.use('/post', postController)
+app.use('/users', userController)
+app.use('/posts', postController)
 app.use('/auth', authController)
 
 

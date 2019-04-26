@@ -32,7 +32,7 @@ router.post('/', (req, res) => {
 			res.send(err);
 		} else {
 			console.log('WHERE IS IT???');
-			res.redirect('/');
+			res.redirect('/users');
 		}
 	})
 });
@@ -69,12 +69,6 @@ router.delete('/:id', (req, res) => {
 				console.log(data)
 				res.redirect('/users');
 			}) //look here first for error
-		}
-		if(err){
-			res.send(err);
-		} else{
-			console.log(deletedUser, "<--was deleted");
-			res.redirect('/users');
 		}
 	})
 })
