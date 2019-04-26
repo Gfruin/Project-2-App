@@ -4,7 +4,7 @@
 1. User creates account
 2. User logs into account
 3. When user clicks create account they are taken to concert listings index
-4. User will be able to search for concert tickets
+4. User will be able to browse for concert tickets
 5. User will be able to create a sell post
 6. User will be able to create a buy (looking for/WTB) post
   - User will be able to add tags to their created posts (buying, selling, free, etc.)
@@ -24,7 +24,7 @@
 5. User would be able to securely exchange money on site (not for money laundering purposes)
 6. User will be able to add interest checks and trade as well.
 7. User will be able to add ratings to other users.
-
+8. User will be able to search for concert tickets
 
 
 *****Wireframes******
