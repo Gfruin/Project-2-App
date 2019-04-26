@@ -9,16 +9,10 @@ router.get('/login', (req, res) => {
 	})
 });
 
+
+// const hashedString = bcrypt.hashSync('Your Password', bcrypt.genSaltSync(10));
 router.post('/register', async (req, res) => {
-	const password = req.body.password;
-	const passwordHash = bcrypt.hashSync(password, bcrypt.genSaltSync(10))
-		console.log('You have registered');
-})
-
-
-
-const hashedString = bcrypt.hashSync('Your Password', bcrypt.genSaltSync(10));
-router.post('/register', async (req, res) => {
+	console.log("you are hitting register");
 	const password = req.body.password;
 	const passwordHash = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
 	const userDBEntry = {};
@@ -26,7 +20,10 @@ router.post('/register', async (req, res) => {
 	userDBEntry.password = passwordHash;
 
 	try {
+		console.log("getting to try");
 		const createdUser = await User.create(userDBEntry);
+		console.log("\nquery finished");
+		console.log(createdUser);
 		req.session.logged = true;
 		req.session.userDBEntry = createdUser._id;
 

@@ -36,8 +36,10 @@ router.post('/', (req, res) => {
         if (err) {
             console.log(err);
         } else {
+            console.log(req.body)
             /// find the correct user and push into their array
-            User.findById(req.body.userId, (err, foundUser) => {
+            console.log(req.session);
+            User.findById(req.session.userDBEntry, (err, foundUser) => {
                 console.log(foundUser, 'here is the user ');
                 foundUser.post.push(createdPost);
                 foundUser.save((err, savedUser) => {
