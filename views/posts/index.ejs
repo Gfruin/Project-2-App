@@ -6,9 +6,9 @@
 <body>
 	<h1> Post Index Page</h1>
 		<ul>
-		<% for(let i = 0; i < post.length; i++) {%>
+		<% for(let i = 0; i < posts.length; i++) {%>
 		<li>
-			<a href="/posts/<%=post[i]._id%>"><%= post[i].title%></a>
+			<a href="/posts/<%=posts[i]._id%>"><%= posts[i].title%></a>
 
 
 		</li>

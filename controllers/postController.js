@@ -39,9 +39,9 @@ router.post('/', (req, res) => {
             console.log(req.body)
             /// find the correct user and push into their array
             console.log(req.session);
-            User.findById(req.session.userDBEntry, (err, foundUser) => {
+            User.findById(req.session.userDBId, (err, foundUser) => {
                 console.log(foundUser, 'here is the user ');
-                foundUser.post.push(createdPost);
+                foundUser.posts.push(createdPost);
                 foundUser.save((err, savedUser) => {
                     console.log(savedUser, "ohohofgdsajfdj");
                     res.redirect('/posts')
@@ -57,7 +57,7 @@ router.post('/', (req, res) => {
 router.get('/:id', (req, res, next) => {
     Post
         .findById(req.params.id)
-        .populate('comments')
+        // .populate('comments')
         .exec((err, foundPost) => {
             if (err) next(err);
             else {
@@ -69,46 +69,33 @@ router.get('/:id', (req, res, next) => {
             }
         })
 })
-// router.get('/:id', (req, res) => {
-//     User
-//         .findOne({
-//             'post._id': req.params.id
-//         })
-//         .populate({
-//             path: 'post',
-//             match: {
-//                 _id: req.params.id
-//             }
-//         })
-//         .exec((err, foundUser) => {
-//             console.log(foundUser, "<---- foundUser in post show route");
-//             res.render('posts/show.ejs', {
-//                 user: foundUser,
-//                 post: foundUser.post[0]
-//             })
-//         })
-// });
-// delete route
-router.delete('/:id', (req, res) => {
-    Post.findbyIdAndRemove(req.params.id, (err, deletedPost) => {
-        User.findOne({
-            'post': req.params.id
-        }, (err, foundUser) => {
-            if (err) {
-                res.send(err)
-            } else {
-                console.log(foundUser, "<-------this is our User before deletion");
-                foundUser.post.remove(req.params.id);
-                foundUser.save((err, updatedUser) => {
+
+// destroy route
+router.delete('/:id', async (req, res, next) => {
+    try{
+        const foundUser = await User.findById(req.session.userDBId).populate('posts')
+        const deletedPost = await Post.findByIdAndRemove(req.params.id)
+        const removeUserPost = await foundUser.posts.remove(req.params.id);
+        const updatedUser = await foundUser.save()
                     console.log(updatedUser);
-                    res.redirect('/posts');
-                })
-            }
-        })
-    })
-    // res.redirect('/post') //may need to alter route "post" to "posts"
+
+
+        res.redirect('/posts');
+    } catch(e) {
+        next(e)
+    }
+
+    // User.findById((req.session.userDBId).populate('posts'), (err, foundUser) => {
+    //         if (err) {
+    //             next(err)
+    //         } else {
+    //             console.log(foundUser, "<-------this is our User before deletion");
+    //             })
+    //         }
+    //     })
+    // })
 })
-// //edit route
+//edit route
 router.get('/:id/edit', (req, res) => {
     //this route will allow the user to select all users when they are editing the user
     //need to use User.find
@@ -132,7 +119,7 @@ router.get('/:id/edit', (req, res) => {
                     res.send(err)
                 } else {
                     res.render('posts/edit.ejs', { //may need to alter route "post" to "posts"
-                        post: foundPostUser.post[0],
+                        posts: foundPostUser.posts[0],
                         users: allUsers,
                         postUser: foundPostUser
                     })

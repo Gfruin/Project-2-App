@@ -25,7 +25,7 @@ router.post('/register', async (req, res) => {
 		console.log("\nquery finished");
 		console.log(createdUser);
 		req.session.logged = true;
-		req.session.userDBEntry = createdUser._id;
+		req.session.userDBId = createdUser._id;
 
 		res.redirect('/users');
 	} catch(err){
@@ -33,14 +33,14 @@ router.post('/register', async (req, res) => {
 	}
 });
 
-router.post('/login', async (req, res) => {
+router.post('/login', async (req, res, next) => {
 	try {
 		const foundUser = await User.findOne({'username': req.body.username});
 		if(foundUser){
 			if(bcrypt.compareSync(req.body.password, foundUser.password) === true){
-				res.session.message = '';
+				req.session.message = '';
 				req.session.logged = true;
-				req.session.usersDBId = foundUser._id;
+				req.session.userDBId = foundUser._id;
 
 				console.log(req.session, ' successful in login');
 				res.redirect('/users');
@@ -53,8 +53,8 @@ router.post('/login', async (req, res) => {
 			res.redirect('/auth/login');
 		}
 	} catch(err){
-	res.send(err);
-}
+		next(err);
+	}
 });
 
 router.get('/logout', (req, res) => {
