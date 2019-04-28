@@ -88,31 +88,46 @@ router.delete('/:id', async (req, res, next) => {
 
 }) //end of destroy route
 //edit route
-router.get('/:id/edit', (req, res) => {
-    User.find({}, (err, allUsers) => {
-        User.findOne({
-                'post': req.params.id
-            })
-            .populate({
-                path: 'post',
-                match: {
-                    _id: req.params.id
-                }
-            })
-            .exec((err, foundPostUser) => {
-                console.log(foundPostUser, "<----foundPostUser");
-                if (err) {
-                    res.send(err)
-                } else {
-                    res.render('posts/edit.ejs', { //may need to alter route "post" to "posts"
-                        posts: foundPostUser.posts[0],
-                        users: allUsers,
-                        postUser: foundPostUser
-                    })
-                }
-            })
-    })
-}) //end of edit route
+router.get('/:id/edit', async (req, res, next) => {
+    try {
+        const foundUserPost = await User.findById(req.session.userDBId).populate('posts').exec()
+        console.log(foundUserPost, "<----foundUserPost");
+            // if (err) {
+            //     res.send(err)
+            // } else {
+                res.render('posts/edit.ejs', { //may need to alter route "post" to "posts"
+                    posts: foundUserPost.posts[0],
+                    // users: allUsers,
+                    // postUser: foundUser
+                })
+            } catch(err) {
+                next(err)
+    }
+})
+ //end of edit route
+//     User.find({}, (err, allUsers) => {
+//         User.findOne({
+//                 'post': req.params.id
+//             })
+//             .populate({
+//                 path: 'post',
+//                 match: {
+//                     _id: req.params.id
+//                 }
+//             })
+//             .exec((err, foundPostUser) => {
+//                 console.log(foundPostUser, "<----foundPostUser");
+//                 if (err) {
+//                     res.send(err)
+//                 } else {
+//                     res.render('posts/edit.ejs', { //may need to alter route "post" to "posts"
+//                         posts: foundPostUser.posts[0],
+//                         users: allUsers,
+//                         postUser: foundPostUser
+//                     })
+//                 }
+//             })
+//     })
 
 // //update route
 //if the user is changed

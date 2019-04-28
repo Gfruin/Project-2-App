@@ -4,8 +4,8 @@
 	<title>Post Editor Page</title>
 </head>
 <body>
-	<h1>Edit <%=post.title%></h1>
-	<form action="/posts/<%=post._id%>?_method=PUT" method="POST">
+	<h1>Edit <%=posts.title%></h1>
+	<form action="/posts/<%=posts._id%>?_method=PUT" method="POST">
 		title: <input type="text" name="title"><br>
 		description: <br><textarea>Post Here</textarea><br>
 		<button>Update Post</button>
