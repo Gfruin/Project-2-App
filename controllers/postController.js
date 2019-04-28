@@ -60,22 +60,22 @@ router.post('/', async (req, res, next) => {
 
 
 // show route
-
-router.get('/:id', (req, res, next) => {
-    Post
+router.get('/:id', async (req, res, next) => {
+    try {
+        const foundPost = await Post
         .findById(req.params.id)
-        // .populate('comments')
-        .exec((err, foundPost) => {
-            if (err) next(err);
-            else {
-                console.log("----------");
-                console.log(foundPost);
-                res.render('posts/show.ejs', { // render show template -- we render templates
-                    post: foundPost // this contains the ID
-                })
-            }
+        .exec()
+        res.render('posts/show.ejs', {
+            post: foundPost
         })
+
+    } catch(err){
+        next(err)
+    }
+
+
 }) //end of show route
+
 
 // destroy route
 router.delete('/:id', async (req, res, next) => {
