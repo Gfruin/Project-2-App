@@ -72,8 +72,6 @@ router.get('/:id', async (req, res, next) => {
     } catch(err){
         next(err)
     }
-
-
 }) //end of show route
 
 
@@ -93,6 +91,7 @@ router.delete('/:id', async (req, res, next) => {
     }
 
 }) //end of destroy route
+
 
 //edit route
 router.get('/:id/edit', (req, res) => {
@@ -120,6 +119,23 @@ router.get('/:id/edit', (req, res) => {
             })
     })
 }) //end of edit route
+
+router.get('/:id/edit', async (req, res, next) => {
+    try {
+        const allUsers = await User.find({})
+        User.findOne({
+                'post': req.params.id
+            })
+            .populate({
+                path: 'post',
+                match: {
+                    _id: req.params.id
+                }
+            })
+
+    } catch(err) {
+        next(err)
+    }
 
 // //update route
 //if the user is changed
