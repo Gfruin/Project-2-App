@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
 
         }
     })
-})
+}) //end of index route
 //new route
 router.get('/new', (req, res, next) => {
     User.find({}, (err, allUsers) => {
@@ -28,7 +28,7 @@ router.get('/new', (req, res, next) => {
             users: allUsers
         }
     })
-})
+}) //end of new route
 //create route
 router.post('/', (req, res) => {
     console.log('this is the post create route');
@@ -51,7 +51,8 @@ router.post('/', (req, res) => {
             //may need to alter route "post" to "posts"
         }
     })
-})
+}) //end of create route
+
 // show route
 
 router.get('/:id', (req, res, next) => {
@@ -68,7 +69,7 @@ router.get('/:id', (req, res, next) => {
                 })
             }
         })
-})
+}) //end of show route
 
 // destroy route
 router.delete('/:id', async (req, res, next) => {
@@ -85,24 +86,9 @@ router.delete('/:id', async (req, res, next) => {
         next(e)
     }
 
-    // User.findById((req.session.userDBId).populate('posts'), (err, foundUser) => {
-    //         if (err) {
-    //             next(err)
-    //         } else {
-    //             console.log(foundUser, "<-------this is our User before deletion");
-    //             })
-    //         }
-    //     })
-    // })
-})
+}) //end of destroy route
 //edit route
 router.get('/:id/edit', (req, res) => {
-    //this route will allow the user to select all users when they are editing the user
-    //need to use User.find
-    //then the route will find the post and corresponding user
-    //User.findOne?
-    //use .populate to find all articles
-    //use match to populate only articles that match the certain user id
     User.find({}, (err, allUsers) => {
         User.findOne({
                 'post': req.params.id
@@ -126,7 +112,8 @@ router.get('/:id/edit', (req, res) => {
                 }
             })
     })
-})
+}) //end of edit route
+
 // //update route
 //if the user is changed
 //1. then the post goes into a different user's array
@@ -153,7 +140,7 @@ router.put('/:id', (req,res) => {
             }
         })
     })
-})
+}) //end of update route
 
 //export module
 
