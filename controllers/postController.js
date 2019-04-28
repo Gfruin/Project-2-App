@@ -3,22 +3,8 @@ const express = require('express');
 const router = express.Router();
 const Post = require('../models/post'); //may need to change the variable name and multiples
 const User = require('../models/user');
+
 //index route
-// router.get('/', (req, res) => {
-//     console.log('<-------------Hit the index route');
-//     //need to display the posts that have been created
-//     Post.find({}, (err, foundPosts) => {
-//         if (err) {
-//             console.log(err);
-//         } else {
-//             res.render('posts/index.ejs', {
-//                 posts: foundPosts
-//             })
-
-//         }
-//     })
-// }) //end of index route
-
 router.get('/', async (req, res) => {
     try {
         const foundPosts = await Post.find({})
@@ -29,43 +15,49 @@ router.get('/', async (req, res) => {
         res.send(err)
     }
 
-})
+}) //end index route
 
 //new route
-router.get('/new', (req, res, next) => {
-    User.find({}, (err, allUsers) => {
-        if (err) {
-            next(err);
-        } else {
-            res.render('posts/new.ejs') //may need to alter route "post" to "posts"
-            users: allUsers
-        }
-    })
-}) //end of new route
+// router.get('/new', (req, res, next) => {
+//     User.find({}, (err, allUsers) => {
+//         if (err) {
+//             next(err);
+//         } else {
+//             res.render('posts/new.ejs') //may need to alter route "post" to "posts"
+//             users: allUsers
+//         }
+//     })
+// }) //end of new route
+router.get('/new', async (req, res, next) => {
+    try {
+        const allUsers = await User.find({})
+        res.render('posts/new.ejs')
+        users: allUsers
+
+    } catch(err) {
+        next(err)
+    }
+})
+
 
 //create route
-router.post('/', (req, res) => {
+router.post('/', async (req, res, next) => {
     console.log('this is the post create route');
-    Post.create(req.body, (err, createdPost) => {
-        if (err) {
-            console.log(err);
-        } else {
-            console.log(req.body)
-            /// find the correct user and push into their array
-            console.log(req.session);
-            User.findById(req.session.userDBId, (err, foundUser) => {
-                console.log(foundUser, 'here is the user ');
-                foundUser.posts.push(createdPost);
-                foundUser.save((err, savedUser) => {
-                    console.log(savedUser, "ohohofgdsajfdj");
-                    res.redirect('/posts')
+    try {
+        const createdPost = await Post.create(req.body)
+        const foundUser = await User.findById(req.session.userDBId)
+        foundUser.posts.push(createdPost);
+        const savedUser = await foundUser.save()
+        console.log(savedUser, "The user was saved!");
+        res.redirect('/posts')
 
-                })
-            })
-            //may need to alter route "post" to "posts"
-        }
-    })
+    } catch(err) {
+        next(err)
+    }
+
+
 }) //end of create route
+
 
 // show route
 
