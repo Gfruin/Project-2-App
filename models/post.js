@@ -9,6 +9,7 @@ const postSchema = new mongoose.Schema({
 	comments: [{type: mongoose.Schema.Types.ObjectId, ref: "Comments"}]
 
 })
+
 //define the model 
 const Post = new mongoose.model('Post', postSchema)
 //export module

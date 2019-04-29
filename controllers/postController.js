@@ -43,7 +43,7 @@ router.post('/', (req, res) => {
                 console.log(foundUser, 'here is the user ');
                 foundUser.posts.push(createdPost);
                 foundUser.save((err, savedUser) => {
-                    console.log(savedUser, "ohohofgdsajfdj");
+                    console.log(savedUser, "saved a user");
                     res.redirect('/posts')
 
                 })
@@ -102,28 +102,36 @@ router.get('/:id/edit', async (req, res, next) => {
     // }
 
  //end of edit route    User.find({}, (err, allUsers) => {
-        User.find({}, (err, allUsers) => {
+      
+    User.find({}, (err, allUsers) => {
         User.findById(req.session.userDBId)
             .populate({
-                path: req.session.userDBId,
+                path: 'posts',
                 match: {
-                    _id: req.session.userDBId
+                    _id: req.params.id // get post that matches the post Id user is trying to edit
                 }
             })
             .exec((err, foundPostUser) => {
-                console.log(foundPostUser, "<----foundPostUser");
+                console.log("\n here is foundPostUser in show route");
+                console.log(foundPostUser);
+            
                 if (err) {
                     res.send(err)
                 } else {
                     res.render('posts/edit.ejs', { //may need to alter route "post" to "posts"
-                        posts: foundPostUser.posts[0],
+                        post: foundPostUser.posts[0],
                         users: allUsers,
                         postUser: foundPostUser
                     })
                 }
+            
             })
         })
     })
+
+
+
+
     // User.find({}, (err, allUsers) => {
     //     User.findOne({
     //             'post': req.params.id
@@ -183,7 +191,7 @@ router.put('/:id', (req, res) => {
     console.log(updatedPost, "<-----Here is the updatedPost");
         User.findById(req.session.userDBId , (err, foundUser) => {
             console.log(foundUser, "<-----This muthafucka");
-            // if(foundUser._id.toString() !== req.body.userId) {
+            if(foundUser._id.toString() !== req.session.userDBId) {
                 foundUser.posts.remove(req.session.userDBId);
                 foundUser.save((err, savedFoundUser) => {
                     console.log(savedFoundUser, "<-----saved this muthafucka");
@@ -197,9 +205,9 @@ router.put('/:id', (req, res) => {
                    
                     })
                 })
-            // } else {
-            //     res.redirect('/posts/' + req.params.id)
-            // }
+            } else {
+                res.redirect('/posts/' + req.params.id)
+            }
         })
     })
 }) //end of update route
