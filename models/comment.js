@@ -2,10 +2,6 @@
 const mongoose = require('mongoose')
 //define commentSchema
 const commentSchema = new mongoose.Schema({
-	text: {
-		type: String,
-		required: true
-	},
 	date: {
 		type: Date,
 		default: Date.now
@@ -15,7 +11,7 @@ const commentSchema = new mongoose.Schema({
 		type: String,
 		required: true
 	},
-	users: {type: mongoose.Schema.Types.ObjectId, ref: "Users"} //type will refer
+	users: {type: mongoose.Schema.Types.ObjectId, ref: "User"} //type will refer
 	//to mongoose to find the user id to print on the page.... 
 	//ref is to model of 'user'
 })

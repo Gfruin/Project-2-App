@@ -5,8 +5,8 @@ const mongoose = require('mongoose')
 const postSchema = new mongoose.Schema({
 	title: String,
 	description: String,
-	tags: [{type: mongoose.Schema.Types.ObjectId, ref: "Tags"}],
-	comments: [{type: mongoose.Schema.Types.ObjectId, ref: "Comments"}]
+	tags: [{type: mongoose.Schema.Types.ObjectId, ref: "Tag"}],
+	comments: [{type: mongoose.Schema.Types.ObjectId, ref: "Comment"}]
 
 })
 
