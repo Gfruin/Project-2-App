@@ -26,6 +26,7 @@ router.post('/register', async (req, res) => {
 		console.log(createdUser);
 		req.session.logged = true;
 		req.session.userDBId = createdUser._id;
+		req.session.username = createdUser.username
 
 		res.redirect('/users');
 	} catch(err){
@@ -41,6 +42,7 @@ router.post('/login', async (req, res, next) => {
 				req.session.message = '';
 				req.session.logged = true;
 				req.session.userDBId = foundUser._id;
+				req.session.username = foundUser.username
 
 				console.log(req.session, ' successful in login');
 				res.redirect('/users');

@@ -59,7 +59,13 @@ router.post('/', (req, res) => {
 router.get('/:id', (req, res, next) => {
     Post
         .findById(req.params.id)
-        .populate('comments')
+        .populate({
+            // THANK YOU: https://stackoverflow.com/a/33669169
+            path: 'comments',
+            populate: {
+                path: 'user'
+            }
+        })
         .exec((err, foundPost) => {
             if (err) next(err);
             else {
@@ -67,10 +73,12 @@ router.get('/:id', (req, res, next) => {
                 console.log(foundPost);
                 res.render('posts/show.ejs', { // render show template -- we render templates
                     post: foundPost // this contains the ID
-                })
+               })
             }
         })
-}) //end of show route
+
+})
+//end of show route
 
 // destroy route
 router.delete('/:id', async (req, res, next) => {
