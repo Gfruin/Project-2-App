@@ -19,8 +19,7 @@
 		</form>
 	<br>
 	<h2>Comment section here</h2>
-	<form action="/comments" method="POST">
-		<input type="hidden" name="req.params.id" value="<%=post._id%>"/>
+	<form action="/comments/<%=post._id%>" method="POST">
 		<textarea name="text"></textarea>
 		<button>Add comment</button>
 	</form>

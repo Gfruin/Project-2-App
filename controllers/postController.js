@@ -59,7 +59,7 @@ router.post('/', (req, res) => {
 router.get('/:id', (req, res, next) => {
     Post
         .findById(req.params.id)
-        // .populate('comments')
+        .populate('comments')
         .exec((err, foundPost) => {
             if (err) next(err);
             else {

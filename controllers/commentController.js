@@ -4,14 +4,15 @@ const Post = require('../models/post')
 const User = require('../models/user')
 const Comment = require('../models/comment')
 
-router.post('/', (req, res) => {
-	Post.findById(req.params.id, (err, foundPost) => {
+router.post('/:postId', (req, res) => {
+	console.log(req.body.postID)
+	Post.findById(req.params.postId, (err, foundPost) => {
 		Comment.create({
 			text: req.body.text
 
 		}, (err, createdComment) => {
 
-			foundPost.comment.push(createdComment);
+			foundPost.comments.push(createdComment);
 			foundPost.save((err) => {
 				if(err)
 					console.log(err);
