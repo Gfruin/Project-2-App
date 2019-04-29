@@ -11,7 +11,7 @@ const commentSchema = new mongoose.Schema({
 		type: String,
 		required: true
 	},
-	users: {type: mongoose.Schema.Types.ObjectId, ref: "User"} //type will refer
+	user: {type: mongoose.Schema.Types.ObjectId, ref: "User"} //type will refer
 	//to mongoose to find the user id to print on the page.... 
 	//ref is to model of 'user'
 })

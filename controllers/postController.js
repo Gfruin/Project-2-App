@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 const Post = require('../models/post'); //may need to change the variable name and multiples
 const User = require('../models/user');
+const Comment = require('../models/comment')
 //index route
 router.get('/', (req, res) => {
     console.log('<-------------Hit the index route');
@@ -98,7 +99,7 @@ router.get('/:id/edit', async (req, res, next) => {
                 }
             })
             .exec((err, foundPostUser) => {
-                console.log("\n here is foundPostUser in show route");
+                console.log("\n here is foundPostUser in show route"); 
                 console.log(foundPostUser);
             
                 if (err) {

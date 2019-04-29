@@ -9,9 +9,8 @@ require('./db/db')
 //controllers
 const userController = require('./controllers/userController')
 const postController = require('./controllers/postController')
-
 const authController = require('./controllers/authController')
-
+const commentController = require('./controllers/commentController')
 //middleware
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(methodOverride('_method'));
@@ -24,6 +23,7 @@ app.use(session({
 
 app.use('/users', userController)
 app.use('/posts', postController)
+app.use('/comments', commentController)
 app.use('/auth', authController)
 
 
