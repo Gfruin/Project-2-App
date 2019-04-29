@@ -26,7 +26,14 @@ app.use('/posts', postController)
 app.use('/comments', commentController)
 app.use('/auth', authController)
 
+app.get('/', (req, res) => {
+	const msg = req.session.message
+	req.session.message = ""
 
+	res.render('home.ejs', {
+		message: msg
+	})
+})
 
 
 //app listener 
