@@ -1,3 +1,4 @@
+<%- include ../partials/header.ejs %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,16 +7,6 @@
 <body>
 	<h1>Edit Post Details <%=post._id.title%></h1>
 	<form action="/posts/<%=post._id%>?_method=PUT" method="POST">
-		<select name="userDBId">
-			<%for(let i = 0; i < users.length; i++) {%>
-				<option value=<%="users[i]._id"%>
-					<% if(users[i].id.toString() === postUser._id.toString()){%>
-					<%}%>
-
-
-				><%= users[i].username%></option>
-			<%}%>
-		</select>
 		title: <input type="text" name="title" value="<%= post.title%>">
 		<br>
 		description: <br><textarea name="description"><%= post.description %></textarea><br>
