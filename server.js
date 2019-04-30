@@ -33,7 +33,7 @@ const authController = require('./controllers/authController')
 app.use('/auth', authController)
 app.use(express.static('public'))
 
-app.get('/home', (req,res,next) => {
+app.get('/', (req,res,next) => {
 	res.render('home.ejs')
 })
 
