@@ -10,12 +10,23 @@
 	<a href="/posts/new">To create posts page</a>
 		<ul>
 		<% for(let i = 0; i < posts.length; i++) {%>
+		
+			<% for (let j = 0; j < posts[j].tags.length; j++)  {%>
+			<%if(posts[j].tags.buy === true) {%> 
+			<strong>Buy</strong>
+
+			<%}%>
+			
+		
+			<%}%>
 		<li>
 			<a href="/posts/<%=posts[i]._id%>"><%= posts[i].title%></a>
 
 
 		</li>
+
 		<%}%>
+
 
 	</ul>
 

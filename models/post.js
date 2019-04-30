@@ -5,7 +5,7 @@ const mongoose = require('mongoose')
 const postSchema = new mongoose.Schema({
 	title: String,
 	description: String,
-	tags: [{type: mongoose.Schema.Types.ObjectId, ref: "Tag"}],
+	tags: [String],
 	comments: [{type: mongoose.Schema.Types.ObjectId, ref: "Comment"}],
 	user: {type: mongoose.Schema.Types.ObjectId, ref: "User"}
 

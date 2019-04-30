@@ -33,7 +33,27 @@ router.get('/new', (req, res, next) => {
 //create route
 router.post('/', (req, res) => {
     console.log('this is the post create route');
-    Post.create(req.body, (err, createdPost) => {
+
+
+    const newPost = {
+        title: req.body.title, 
+        description: req.body.description,
+        tags: [],
+    } 
+        console.log(newPost);
+    if(req.body.buy === 'on'){
+        newPost.tags.push("buy")
+            console.log(newPost);
+    }
+
+    if(req.body.sell === 'on'){
+        newPost.tags.push("sell")
+    }
+
+    if(req.body.free === 'on'){
+        newPost.tags.push("free")
+    }
+    Post.create(newPost, (err, createdPost) => {
         if (err) {
             console.log(err);
         } else {
@@ -49,7 +69,7 @@ router.post('/', (req, res) => {
 
                 })
             })
-            //may need to alter route "post" to "posts"
+            //
         }
     })
 }) //end of create route
