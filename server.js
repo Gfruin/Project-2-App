@@ -34,13 +34,17 @@ app.use('/auth', authController)
 app.use(express.static('public'))
 
 
-app.get('/', (req, res) => {
-	const msg = req.session.message
-	req.session.message = ""
 
-	res.redirect('/home', {
-		message: msg
-	})
+// app.get('/', (req, res) => {
+// 	const msg = req.session.message
+// 	req.session.message = ""
+
+// 	res.redirect('/home', {
+// 		message: msg
+// 	})
+
+app.get('/', (req,res,next) => {
+	res.render('home.ejs')
 })
 
 
