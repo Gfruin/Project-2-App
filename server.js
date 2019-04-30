@@ -33,8 +33,14 @@ const authController = require('./controllers/authController')
 app.use('/auth', authController)
 app.use(express.static('public'))
 
-app.get('/home', (req,res,next) => {
-	res.render('home.ejs')
+
+app.get('/', (req, res) => {
+	const msg = req.session.message
+	req.session.message = ""
+
+	res.redirect('/home', {
+		message: msg
+	})
 })
 
 

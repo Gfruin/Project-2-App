@@ -13,12 +13,23 @@
 	<a href="/posts/new">To create posts page</a>
 		<ul>
 		<% for(let i = 0; i < posts.length; i++) {%>
-		<li>
-			<a href="/posts/<%=posts[i]._id%>"><%= posts[i].title%></a>
+		
+			<% for (let j = 0; j < posts[i].tags.length; j++)  {%>
+				<%if(posts[i].tags[j]/*includes*/) {%> 
+					<strong>Buy</strong>
+
+				<%}%>
+				
+		
+			<%}%>
+			<li>
+				<a href="/posts/<%=posts[i]._id%>"><%= posts[i].title%></a>
 
 
-		</li>
+			</li>
+
 		<%}%>
+
 
 	</ul>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
