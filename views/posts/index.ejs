@@ -17,7 +17,12 @@
 			<% for (let j = 0; j < posts[i].tags.length; j++)  {%>
 				<%if(posts[i].tags[j].includes('buy')) {%> 
 					<strong>Buy</strong>
-
+				<%}%>
+				<%if(posts[i].tags[j].includes('sell')) {%> 
+					<strong>Sell</strong>
+				<%}%>
+				<%if(posts[i].tags[j].includes('free')) {%> 
+					<strong>Free</strong>
 				<%}%>
 				
 		
