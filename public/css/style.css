@@ -46,10 +46,22 @@ body {
 
 }
 
+#postindexpage {
+	background-image: url('');
+	background-size: cover;
+	opacity: .9;
+	background-repeat: no-repeat;
+	/*color: white;*/
+}
 
 
-
-
+#postnewpage {
+	background-image: url("https://showbams.files.wordpress.com/2015/01/strfkr-19.jpg?w=590&h=394");
+	background-size: cover;
+	opacity: .9;
+	background-repeat: no-repeat;
+	color: white;
+}
 
 
 
