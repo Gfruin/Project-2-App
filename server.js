@@ -36,8 +36,8 @@ app.use(express.static('public'))
 
 
 // app.get('/', (req, res) => {
-// 	const msg = req.session.message
-// 	req.session.message = ""
+	// req.session.message = ""
+	// const msg = req.session.message
 
 // 	res.redirect('/home', {
 // 		message: msg
