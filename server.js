@@ -25,6 +25,7 @@ app.use('/users', userController)
 app.use('/posts', postController)
 app.use('/comments', commentController)
 app.use('/auth', authController)
+app.use(express.static('public'))
 
 app.get('/home', (req,res,next) => {
 	res.render('home.ejs')
