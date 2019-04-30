@@ -56,6 +56,9 @@ router.get('/:id', (req, res) => {
 
 //delete route
 router.delete('/:id', (req, res) => {
+	if(req.session.userDBId == null) {
+        res.redirect('/auth/login')
+    } else {
 	User.findByIdAndRemove(req.params.id, (err, deletedUser) => {
 		if(err){
 			res.send(err);
@@ -71,13 +74,18 @@ router.delete('/:id', (req, res) => {
 			}) //look here first for error
 		}
 	})
+	}
 })
 
 // edit route
 router.get('/:id/edit', (req, res) => {
+	if(req.session.userDBId == null) {
+        res.redirect('/auth/login')
+    } else {
 	User.findById(req.params.id, (err, foundUser) => {
 		res.render('users/edit.ejs', {user: foundUser})
 	})
+}
 })
 	
 // update route

@@ -102,19 +102,22 @@ router.get('/:id', (req, res, next) => {
 
 // destroy route
 router.delete('/:id', async (req, res, next) => {
-    try{
-        const foundUser = await User.findById(req.session.userDBId).populate('posts')
-        const deletedPost = await Post.findByIdAndRemove(req.params.id)
-        const removeUserPost = await foundUser.posts.remove(req.params.id);
-        const updatedUser = await foundUser.save()
+    if(req.session.userDBId == null) {
+        res.redirect('/auth/login')
+    } else {
+        try{
+            const foundUser = await User.findById(req.session.userDBId).populate('posts')
+            const deletedPost = await Post.findByIdAndRemove(req.params.id)
+            const removeUserPost = await foundUser.posts.remove(req.params.id);
+            const updatedUser = await foundUser.save()
                     console.log(updatedUser);
 
 
-        res.redirect('/posts');
-    } catch(e) {
+            res.redirect('/posts');
+    }   catch(e) {
         next(e)
     }
-
+    }
 }) //end of destroy route
 //edit route
 router.get('/:id/edit', async (req, res, next) => {
