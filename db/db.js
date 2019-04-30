@@ -3,9 +3,9 @@ const mongoose = require('mongoose');
 
 //make connection string
 const connectionString = 'mongodb://localhost/tix11'
-
+console.log(process.env);
 //connect mongoose
-mongoose.connect(connectionString, {
+mongoose.connect(process.env.MONGODB_URI, {
 	useNewUrlParser: true,
 	useCreateIndex: true,
 	useFindAndModify: false 
