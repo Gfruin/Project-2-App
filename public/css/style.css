@@ -24,3 +24,8 @@ body {
 	background-repeat: no-repeat;
 	height: 45em;
 }
+
+#postshowpagebody {
+	font-family: 'Lobster', cursive;
+	margin: 2%;
+}
