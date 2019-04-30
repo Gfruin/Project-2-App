@@ -36,12 +36,15 @@ body {
 	font-size: 100px;
 }
 
-#homepagevideo  {
 
+#posteditpage {
+	background-image: url("https://www.rollingstone.com/wp-content/uploads/2018/06/rs-sleater-kinney-01c590db-a3e8-4de3-ae95-603b3f73b9e3.jpg?crop=900:600&width=440");
+	background-size: cover;
+	opacity: .9;
+	background-repeat: no-repeat;
+	color: white;
 
 }
-
-
 
 
 
