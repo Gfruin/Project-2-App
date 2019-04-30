@@ -1,3 +1,26 @@
 body {
-	background-color: chartreuse;
+
+}
+
+/*#homebody {
+	
+	background-repeat: no-repeat;
+	width: auto;
+	height: auto;
+}*/
+
+#header-div {
+	background-color: black;
+	height: 5em;
+	font-size: 20px;
+	line-height: 50px;
+	font-weight: bold;
+}
+
+.cover {
+	background-image: url("https://www.gannett-cdn.com/-mm-/769cb79fb6121d2146e5613aad6a2593daf5be65/c=0-188-2048-1345/local/-/media/2016/05/04/SiouxFalls/SiouxFalls/635979585928201467-STRFKR-Tucson-Josh-Wallace-3.jpg?width=580&height=326&fit=crop");
+	background-size: cover;
+	opacity: .9;
+	background-repeat: no-repeat;
+	height: 45em;
 }
