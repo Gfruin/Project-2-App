@@ -6,11 +6,6 @@ const methodOverride = require('method-override')
 const session = require('express-session')
 const explainError = require('explain-error')
 require('./db/db')
-//controllers
-const userController = require('./controllers/userController')
-const postController = require('./controllers/postController')
-const authController = require('./controllers/authController')
-const commentController = require('./controllers/commentController')
 //middleware
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(methodOverride('_method'));
@@ -21,10 +16,17 @@ app.use(session({
 	saveUninitialized: false
 }))
 
+//controllers
+const userController = require('./controllers/userController')
 app.use('/users', userController)
+const postController = require('./controllers/postController')
 app.use('/posts', postController)
+const commentController = require('./controllers/commentController')
 app.use('/comments', commentController)
+const authController = require('./controllers/authController')
 app.use('/auth', authController)
+app.use(express.static('public'))
+
 
 app.get('/', (req, res) => {
 	const msg = req.session.message
