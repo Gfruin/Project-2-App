@@ -118,6 +118,10 @@ router.delete('/:id', async (req, res, next) => {
 }) //end of destroy route
 //edit route
 router.get('/:id/edit', async (req, res, next) => {
+    if(req.session.userDBId == null) {
+        res.redirect('/auth/login')
+    } else {
+
     User.find({}, (err, allUsers) => {
         User.findById(req.session.userDBId)
             .populate({
@@ -131,6 +135,7 @@ router.get('/:id/edit', async (req, res, next) => {
                 console.log(foundPostUser);
             
                 if (err) {
+                    // res.redirect('/auth/login')
                     next(err)
                 } else {
                     res.render('posts/edit.ejs', { //may need to alter route "post" to "posts"
@@ -142,6 +147,7 @@ router.get('/:id/edit', async (req, res, next) => {
             
             })
         })
+    } //first else statement end
 })
 
 // //update route
