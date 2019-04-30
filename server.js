@@ -26,7 +26,9 @@ app.use('/posts', postController)
 app.use('/comments', commentController)
 app.use('/auth', authController)
 
-
+app.get('/home', (req,res,next) => {
+	res.render('home.ejs')
+})
 
 
 //app listener 
