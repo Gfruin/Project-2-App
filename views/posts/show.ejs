@@ -11,7 +11,8 @@
 <body>
 	<h1>Post Display</h1>
 	<h2> post name is <%= post.title %></h2>
-	<h3>Post ID: <%=post._id%></h3>
+	<h3>Post Description: </h3>
+	<p><%=post.description%></p>
 	<h4>Your posts here: </h4>
 
 		<form action="/posts/<%= post._id%>/edit">
