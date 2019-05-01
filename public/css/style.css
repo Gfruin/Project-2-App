@@ -16,6 +16,7 @@ body {
 	font-size: 20px;
 	line-height: 50px;
 	font-weight: bold;
+	font-family: 'Permanent Marker', cursive;
 }
 
 .cover {
@@ -119,9 +120,17 @@ body {
 	opacity: .9;
 	background-repeat: no-repeat;
 	color: white;
+	font-family: 'Permanent Marker', cursive;
 }
 
+#commentuser {
+	font-size: 30px;
+}
 
+#commenttext {
+	font-size: 25px;
+	font-weight: 900;
+}
 
 
 
