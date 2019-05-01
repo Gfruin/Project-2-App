@@ -114,8 +114,9 @@ body {
 	background-repeat: no-repeat;
 	color: white;
 	font-family: 'Permanent Marker', cursive;
-	font-size: 20px;
+	font-size: 35px;
 	text-shadow: 2px 2px #E40030;
+	margin: 2%;
 }
 
 #usernewpage {
