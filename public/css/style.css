@@ -26,8 +26,11 @@ body {
 }
 
 #postshowpagebody {
-	font-family: 'Lobster', cursive;
-	margin: 2%;
+	background-image: url('https://beardedgentlemenmusic.com/wp-content/uploads/2017/01/Sleater-Kinney-Live-Album-Review.jpg');
+	background-size: cover;
+	opacity: .9;
+	background-repeat: no-repeat;
+	color: white;
 }
 
 #homepagebanner {
@@ -63,6 +66,13 @@ body {
 	color: white;
 }
 
+#usereditpage {
+	background-image: url('https://i.ytimg.com/vi/yCaICJvjpRQ/maxresdefault.jpg');
+	background-size: cover;
+	opacity: .9;
+	background-repeat: no-repeat;
+	color: white;
 
+}
 
 
