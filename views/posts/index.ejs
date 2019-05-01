@@ -12,9 +12,8 @@
 	<h1> All Posts</h1>
 	<a href="/auth/login/"class="link">Login and Register</a>
 	<a href="/posts/new"class="link">To create posts page</a>
-		<ul>
 		<% for(let i = 0; i < posts.length; i++) {%>
-		
+			<div class="tags">
 			<% for (let j = 0; j < posts[i].tags.length; j++)  {%>
 				<%if(posts[i].tags[j].includes('buy')) {%> 
 					<strong>Buy</strong>
@@ -25,13 +24,11 @@
 				<%if(posts[i].tags[j].includes('free')) {%> 
 					<strong>Free</strong>
 				<%}%>
-				
+			</div>
 		
 			<%}%>
 			<li>
 				<a href="/posts/<%=posts[i]._id%>"class="link"><%= posts[i].title%></a>
-
-
 			</li>
 
 		<%}%>

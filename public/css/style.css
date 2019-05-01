@@ -6,6 +6,10 @@ body {
 .link {
 	color:white;
 }
+.tags {
+	color: orange;
+	font-size: 30px;
+}
 /*#homebody {
 	
 	background-repeat: no-repeat;
@@ -20,6 +24,7 @@ body {
 	line-height: 50px;
 	font-weight: bold;
 	font-family: 'Permanent Marker', cursive;
+	text-shadow: 2px 2px #E40030;
 }
 
 .cover {
@@ -50,6 +55,7 @@ body {
 	text-align: center;
 	font-size: 70px;
 	font-family: 'Permanent Marker', cursive;
+	text-shadow: 2px 2px #E40030;
 }
 
 
@@ -60,6 +66,7 @@ body {
 	background-repeat: no-repeat;
 	color: white;
 	font-family: 'Permanent Marker', cursive;
+	text-shadow: 2px 2px #E40030;
 
 }
 
@@ -71,6 +78,7 @@ body {
 	color: white;
 	font-family: 'Permanent Marker', cursive;
 	font-size: 20px;
+	text-shadow: 2px 2px #E40030;
 
 }
 
@@ -82,6 +90,7 @@ body {
 	background-repeat: no-repeat;
 	color: white;
 	font-family: 'Permanent Marker', cursive;
+	text-shadow: 2px 2px #E40030;
 }
 
 #usereditpage {
@@ -91,6 +100,7 @@ body {
 	background-repeat: no-repeat;
 	color: white;
 	font-family: 'Permanent Marker', cursive;
+	text-shadow: 2px 2px #E40030;
 
 }
 #userindexpage {
@@ -101,6 +111,7 @@ body {
 	color: white;
 	font-family: 'Permanent Marker', cursive;
 	font-size: 20px;
+	text-shadow: 2px 2px #E40030;
 }
 
 #usernewpage {
@@ -110,6 +121,7 @@ body {
 	background-repeat: no-repeat;
 	color: white;	
 	font-family: 'Permanent Marker', cursive;
+	text-shadow: 2px 2px #E40030;
 }
 
 #usershowpage {
@@ -119,6 +131,7 @@ body {
 	background-repeat: no-repeat;
 	color: white;
 	font-family: 'Permanent Marker', cursive;
+	text-shadow: 2px 2px #E40030;
 }
 
 #loginpage {
@@ -128,15 +141,18 @@ body {
 	background-repeat: no-repeat;
 	color: white;
 	font-family: 'Permanent Marker', cursive;
+	text-shadow: 2px 2px #E40030;
 }
 
 #commentuser {
 	font-size: 30px;
+	text-shadow: 2px 2px #E40030;
 }
 
 #commenttext {
 	font-size: 25px;
 	font-weight: 900;
+	text-shadow: 2px 2px #E40030;
 }
 
 
