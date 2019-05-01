@@ -1,6 +1,3 @@
-@import url(https://fonts.googleapis.com/css?family=Bevan);
-@import url(https://fonts.googleapis.com/css?family=Lobster+Two&text=%26);
-
 
 body {
 
@@ -27,8 +24,10 @@ body {
 	opacity: .9;
 	background-repeat: no-repeat;
 	height: 45em;
+	font-family: 'Permanent Marker', cursive;
 }
 #homepagebanner {
+
 }
 #postshowpagebody {
 	background-image: url('https://beardedgentlemenmusic.com/wp-content/uploads/2017/01/Sleater-Kinney-Live-Album-Review.jpg');
@@ -36,12 +35,16 @@ body {
 	opacity: .9;
 	background-repeat: no-repeat;
 	color: white;
+	margin-left: 2%;
+	margin-bottom: 4%;
+	font-family: 'Permanent Marker', cursive;
 }
 
 #homepagebanner {
 	color: white;
 	text-align: center;
 	font-size: 100px;
+	font-family: 'Permanent Marker', cursive;
 }
 
 
@@ -51,15 +54,17 @@ body {
 	opacity: .9;
 	background-repeat: no-repeat;
 	color: white;
+	font-family: 'Permanent Marker', cursive;
 
 }
 
 #postindexpage {
-	background-image: url('');
+	background-image: url('http://si.wsj.net/public/resources/images/WK-AQ118_tourju_G_20090610161735.jpg');
 	background-size: cover;
 	opacity: .9;
 	background-repeat: no-repeat;
-	/*color: white;*/
+	color: white;
+	font-family: 'Permanent Marker', cursive;
 }
 
 
@@ -69,6 +74,7 @@ body {
 	opacity: .9;
 	background-repeat: no-repeat;
 	color: white;
+	font-family: 'Permanent Marker', cursive;
 }
 
 #usereditpage {
@@ -77,6 +83,7 @@ body {
 	opacity: .9;
 	background-repeat: no-repeat;
 	color: white;
+	font-family: 'Permanent Marker', cursive;
 
 }
 #userindexpage {
@@ -85,7 +92,7 @@ body {
 	opacity: .9;
 	background-repeat: no-repeat;
 	color: white;
-	font-family: Lobster Two, Bevan;
+	font-family: 'Permanent Marker', cursive;
 }
 
 #usernewpage {
@@ -94,6 +101,7 @@ body {
 	opacity: .9;
 	background-repeat: no-repeat;
 	color: white;	
+	font-family: 'Permanent Marker', cursive;
 }
 
 #usershowpage {
@@ -102,9 +110,17 @@ body {
 	opacity: .9;
 	background-repeat: no-repeat;
 	color: white;
+	font-family: 'Permanent Marker', cursive;
 }
 
-
+#loginpage {
+	background-image: url('https://media0.giphy.com/media/2hgmf83us1Yzjz71vX/giphy.gif?cid=6104955e5cc8eb26585a786263d3db49&rid=giphy.gif');
+	background-size: cover;
+	opacity: .9;
+	background-repeat: no-repeat;
+	color: white;
+	font-family: 'Permanent Marker', cursive;
+}
 
 
 
