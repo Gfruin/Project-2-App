@@ -11,12 +11,12 @@
 </head>
 <body id="userindexpage">
 	<h1>User Index Page</h1>
-	<a href="/auth/login/">Login and Register</a>
-	<a href="/posts">To posts index page</a>
+	<a href="/auth/login/"class="link">Login and Register</a>
+	<a href="/posts"class="link">To posts index page</a>
 	<ul>
 		<% for(let i = 0; i < users.length; i++) {%>
 		<li>
-			<a href="/users/<%=users[i]._id%>"><%= users[i].username%></a>
+			<a href="/users/<%=users[i]._id%>"class="link"><%= users[i].username%></a>
 
 
 		</li>

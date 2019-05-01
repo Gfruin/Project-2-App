@@ -3,6 +3,9 @@ body {
 
 }
 
+.link {
+	color:white;
+}
 /*#homebody {
 	
 	background-repeat: no-repeat;
@@ -39,6 +42,7 @@ body {
 	margin-left: 2%;
 	margin-bottom: 4%;
 	font-family: 'Permanent Marker', cursive;
+	text-shadow: 2px 2px #E40030;
 }
 
 #homepagebanner {
@@ -66,6 +70,8 @@ body {
 	background-repeat: no-repeat;
 	color: white;
 	font-family: 'Permanent Marker', cursive;
+	font-size: 20px;
+
 }
 
 
@@ -94,6 +100,7 @@ body {
 	background-repeat: no-repeat;
 	color: white;
 	font-family: 'Permanent Marker', cursive;
+	font-size: 20px;
 }
 
 #usernewpage {
@@ -131,7 +138,6 @@ body {
 	font-size: 25px;
 	font-weight: 900;
 }
-
 
 
 

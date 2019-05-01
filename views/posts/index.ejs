@@ -10,8 +10,8 @@
 </head>
 <body id="postindexpage">
 	<h1> All Posts</h1>
-	<a href="/auth/login/">Login and Register</a>
-	<a href="/posts/new">To create posts page</a>
+	<a href="/auth/login/"class="link">Login and Register</a>
+	<a href="/posts/new"class="link">To create posts page</a>
 		<ul>
 		<% for(let i = 0; i < posts.length; i++) {%>
 		
@@ -29,7 +29,7 @@
 		
 			<%}%>
 			<li>
-				<a href="/posts/<%=posts[i]._id%>"><%= posts[i].title%></a>
+				<a href="/posts/<%=posts[i]._id%>"class="link"><%= posts[i].title%></a>
 
 
 			</li>
