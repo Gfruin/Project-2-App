@@ -94,6 +94,7 @@ body {
 	color: white;
 	font-family: 'Permanent Marker', cursive;
 	text-shadow: 2px 2px #E40030;
+	text-align: center;
 }
 
 #usereditpage {
@@ -135,6 +136,7 @@ body {
 	color: white;
 	font-family: 'Permanent Marker', cursive;
 	text-shadow: 2px 2px #E40030;
+	margin: 2%;
 }
 
 #loginpage {
@@ -145,6 +147,7 @@ body {
 	color: white;
 	font-family: 'Permanent Marker', cursive;
 	text-shadow: 2px 2px #E40030;
+	margin: 1%;
 }
 
 #commentuser {
