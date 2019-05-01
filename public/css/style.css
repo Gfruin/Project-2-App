@@ -24,7 +24,8 @@ body {
 	background-repeat: no-repeat;
 	height: 45em;
 }
-
+#homepagebanner {
+}
 #postshowpagebody {
 	background-image: url('https://beardedgentlemenmusic.com/wp-content/uploads/2017/01/Sleater-Kinney-Live-Album-Review.jpg');
 	background-size: cover;
@@ -74,5 +75,30 @@ body {
 	color: white;
 
 }
+#userindexpage {
+	background-image: url('http://larecord.com/larwp/wp-content/gallery/march2015_of-montreal-regent/OfMontreal%40TheREgent_3_22%20-%2004.jpg');
+	background-size: cover;
+	opacity: .9;
+	background-repeat: no-repeat;
+	color: white;
+}
+
+#usernewpage {
+	background-image: url('https://beardedgentlemenmusic.com/wp-content/uploads/2016/03/STRFKR-are-crazy-live.png');
+	background-size: cover;
+	opacity: .9;
+	background-repeat: no-repeat;
+	color: white;	
+}
+
+
+
+
+
+
+
+
+
+
 
 
